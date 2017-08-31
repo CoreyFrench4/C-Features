@@ -72,19 +72,9 @@ namespace Breakout
             {
                 UpdateBlocks();
             }
-            TimeToggleScaler();
+            
         }
-        void TimeToggleScaler()
-        {
-            if (timeToggle.isOn == true)
-            {
-                Time.timeScale = 2;
-            }
-            else
-            {
-                Time.timeScale = 1;
-            }
-        }
+        
     }
 }
 

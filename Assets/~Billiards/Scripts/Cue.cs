@@ -68,7 +68,7 @@ namespace Billiards
                 //Obtain direction from the cue's position to the raycast's hit point
                 Vector3 dir = transform.position - hit.point;
                 //Convert direction to angle in degrees
-                float angle = Mathf.Atan2(dir.x, dir.x) * Mathf.Rad2Deg;//Radius to Degrees
+                float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;//Radius to Degrees
                 //Rotate towards that angle
                 transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
                 //position cue to the ball's position
