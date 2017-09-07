@@ -11,15 +11,12 @@ namespace Billiards
         public Text winText;
         private int count;
 
-        public float stopSpeed = 0.2f;
+        public float stopSpeed = 0.1f;
         private Rigidbody rigid;
 
-        private Cue cue;
+        public Cue cue;
 
-        void Awake()
-        {
-            cue = GetComponent<Cue>();
-        }
+      
         // Use this for initialization
 
         void Start()
