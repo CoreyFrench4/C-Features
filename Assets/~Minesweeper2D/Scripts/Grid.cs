@@ -6,12 +6,15 @@ namespace Minesweeper2D
 {
     public class Grid : MonoBehaviour
     {
+        public Camera pcamera;
+
         public GameObject tilePrefab;
         public int width = 10;
         public int height = 10;
         public float spacing = .155f;
         public float offset = .1f;
         private Tile[,] tiles;
+
         Tile SpawnTile(Vector3 pos)
         {
             //Clone tile prefab
@@ -56,31 +59,24 @@ namespace Minesweeper2D
         }
         public void ScreenMouseRay()
         {
-            Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = Mathf.Infinity;
 
-            //RaycastHit2D hit = Physics2D.Raycast(Input.mousePosition ,Vector2.zero,Mathf.Infinity); //Hit object that contains gameobject Information
-            RaycastHit2D hit = Physics2D.Raycast(mousePosition, mousePosition - Camera.main.ScreenToWorldPoint(mousePosition), Mathf.Infinity);
-
-            Debug.DrawRay(mousePosition, mousePosition - Camera.main.ScreenToWorldPoint(mousePosition), Color.blue);
-            if (hit)
+            Ray ray = pcamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+            if (hit.collider != null)
             {
-             
-                if (gameObject.CompareTag("Tile"))
+                Tile hitTile = hit.collider.GetComponent<Tile>();
+                if (hitTile != null)
                 {
-                    gameObject.SetActive(false);
-
-                    Debug.Log("this works");
+                    int adjacentMines = GetAdjacentMineCount(hitTile);
+                    Tile.Reveal(adjacentMines);
                 }
             }
         }
-        
-        void Update()
+        void LateUpdate()
         {
             if (Input.GetMouseButtonDown(0))
             {
                 ScreenMouseRay();
-                
             }
         }
         public int GetAdjacentMineCount(Tile t)
@@ -89,12 +85,21 @@ namespace Minesweeper2D
             //Loop through all elements and have each axis go between -1 to 1
             for (int x = -1; x <= 1; x++)
             {
+                for (int y = -1; y <= 1; y++)
+                {
+                    //Calculate desired coordinates from one attained
+                    int desiredy = t.y + y;
+                    //IF desiredX is within range of tiles array length
+                    //IF the element at index is a mine
+                    // Increment count by 1
+                }
                 //Calculate desired coordinates from one attained
                 int desiredX = t.x + x;
                 //IF desiredX is within range of tiles array length
                 //IF the element at index is a mine
                 // Increment count by 1
             }
+
             return count;
         }
     }
