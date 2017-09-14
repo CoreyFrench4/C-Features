@@ -68,7 +68,7 @@ namespace Minesweeper2D
                 if (hitTile != null)
                 {
                     int adjacentMines = GetAdjacentMineCount(hitTile);
-                    Tile.Reveal(adjacentMines);
+
                 }
             }
         }
