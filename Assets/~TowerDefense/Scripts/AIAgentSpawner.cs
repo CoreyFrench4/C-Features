@@ -30,10 +30,10 @@ namespace TowerDefense
         }
         void Spawn()
         {
-            GameObject clone = Instantiate(aiAgentPrefab);
             Vector3 rand = Random.insideUnitSphere;
             rand.y = 0;
-            clone.transform.position = transform.position + rand * spawnRadius;
+            Vector3 pos = transform.position + rand * spawnRadius;
+            GameObject clone = Instantiate(aiAgentPrefab, pos, Quaternion.identity);
             AIAgent aiAgent = clone.GetComponent<AIAgent>();
             aiAgent.target = target;
         }

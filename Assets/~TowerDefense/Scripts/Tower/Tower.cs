@@ -19,7 +19,12 @@ namespace TowerDefense
         // Update is called once per frame
         void Update()
         {
-
+            attackTimer = attackTimer + Time.deltaTime;
+            if (attackTimer >= attackRate)
+            {
+                Attack();
+                attackTimer = 0;
+            } 
         }
         void OnTriggerEnter(Collider col)
         {
@@ -60,7 +65,8 @@ namespace TowerDefense
             Enemy closest = GetClosestEnemy();
             if (closest != null)
             {
-                Cannon.Fire(Enemy);
+                cannon.Fire(closest);
+                   
             }
         }
 
