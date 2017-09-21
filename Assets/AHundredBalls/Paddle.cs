@@ -29,7 +29,7 @@ namespace AHundredBalls
         }
         void UpdateAnimator()
         {
-            anim.SetBool "isOpened", isOpened ;
+            //anim.SetBool "isOpened", isOpened ;
         }
     }
 }
