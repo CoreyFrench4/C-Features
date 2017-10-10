@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Charger : MonoBehaviour {
-
+public class Splodey : Enemy {
+    public float explosionRadius;
+    public float impactForce;
+    public GameObject explosionParticles;
 	// Use this for initialization
 	void Start () {
 		
@@ -13,4 +15,10 @@ public class Charger : MonoBehaviour {
 	void Update () {
 		
 	}
+    protected override void Attack()
+    {
+
+    }
+    
+
 }
