@@ -6,7 +6,7 @@ namespace RollABall
     public class Player : MonoBehaviour
     {
         public float movementSpeed = 50f;
-
+        public float Health = 100;
         private Rigidbody rigid;
 
         // Use this for initialization
