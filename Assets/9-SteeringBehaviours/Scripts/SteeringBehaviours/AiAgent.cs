@@ -35,7 +35,7 @@ namespace AI
                 {
                     continue;
                 }
-                force = force + behaviour.GetForce() * behaviour.weight;
+                force = force + behaviour.GetForce();
                 if (force.magnitude > maxVelocity)
                 {
                     force = force.normalized * maxVelocity;

@@ -4,7 +4,7 @@ using UnityEngine;
 using GGL;
 namespace AI
 {
-    public class Seek : SteeringBehaviour
+    public class Flee : SteeringBehaviour
     {
         public Transform target;
         public float stoppingDistance = 1f;
@@ -16,7 +16,7 @@ namespace AI
             {
                 return force;
             }
-            Vector3 desiredForce = target.position - transform.position;
+            Vector3 desiredForce = transform.position - target.position;
             if (desiredForce.magnitude > stoppingDistance)
             {
                 desiredForce = desiredForce.normalized * weight;
