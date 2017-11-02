@@ -12,7 +12,7 @@ public class RespawnOnCollide : MonoBehaviour
         res = GetComponent<Respawn>();
 
     }
-    void OnCollisonEnter2D
+   
     // Update is called once per frame
     void Update()
     {
