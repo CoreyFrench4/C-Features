@@ -10,6 +10,7 @@ namespace PaperMarioClone
         public float runSpeed = 30f;
         public float jumpHeight = 10f;
         public bool isRunning = false;
+        private bool jumpInstant = false;
         public bool isGrounded
         {
             get { return controller.isGrounded; }
@@ -48,13 +49,23 @@ namespace PaperMarioClone
             {
                 gravity += Physics.gravity * Time.deltaTime;
             }
+            // ADDED THIS
+            if (jumpInstant)
+            {
+                gravity.y = jumpHeight;
+                jumpInstant = false;
+            }
+            //
             movement += gravity;
             controller.Move(movement * Time.deltaTime);
         }
 
-        public void Jump()
+        public void Jump(bool instant = false)
         {
-            jump = true;
+            if (instant) // << CHANGED THIS
+                jumpInstant = true;
+            else
+                jump = true;
         }
 
         public void Move(float inputH, float inputV)
