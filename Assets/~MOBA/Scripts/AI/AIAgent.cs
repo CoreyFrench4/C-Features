@@ -59,8 +59,8 @@ namespace MOBA
             velocity += force * Time.deltaTime;
             // Update nav's speed to velocity
             nav.speed = velocity.magnitude;
-            // Is there a velocity?
-            if (velocity.magnitude > 0)
+            // IF velocity.magnitude > 0 AND nav update position
+            if (velocity.magnitude > 0 && nav.updatePosition)
             {
                 // Is the velocity over maxSpeed?
                 if (velocity.magnitude > maxSpeed)
